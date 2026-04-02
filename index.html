@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Art Canvas - Trace & Draw with Augmented Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #A29BFE;
+            --secondary: #FD79A8;
+            --dark: #2D3436;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: url('') no-repeat center center/cover;
+            background-blend-mode: overlay;
+            background-color: rgba(0,0,0,0.3);
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .download-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+        }
+
+        .features {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .screenshots {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AR Art Canvas</h1>
+            <p>Trace and draw on real paper with augmented reality. Unleash your inner artist today!</p>
+            <a href="https://play.google.com/store/apps/details?id=com.cavers.ar.art.canvas" class="download-btn">Download on Google Play</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose AR Art Canvas?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>AR-Powered Tracing</h3>
+                    <p>Project any drawing onto your paper using your phone's camera. Trace in real-time, no extra equipment needed.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Massive Art Library</h3>
+                    <p>Thousands of free line art templates across cartoons, flowers, fruits, nature, festivals, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Custom Image Import</h3>
+                    <p>Trace any photo, design, or drawing from your gallery. Turn your favorite images into custom sketches.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Beginner Friendly</h3>
+                    <p>No drawing experience required. Learn to draw, practice, and build your skills at your own pace.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>For All Ages</h3>
+                    <p>Fun creative tool for kids, students, hobbyists, and professional artists alike.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Constant Updates</h3>
+                    <p>New art templates added every week, so you'll never run out of things to draw.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">App Screenshots</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <img src="https://i.imgur.com/placeholder1.png" alt="AR Art Canvas - Cartoons Category">
+                </div>
+                <div class="screenshot-card">
+                    <img src="https://i.imgur.com/placeholder2.png" alt="AR Art Canvas - Flowers Category">
+                </div>
+                <div class="screenshot-card">
+                    <img src="https://i.imgur.com/placeholder3.png" alt="AR Art Canvas - Upload Photo">
+                </div>
+                <div class="screenshot-card">
+                    <img src="https://i.imgur.com/placeholder4.png" alt="AR Art Canvas - Fruits Category">
+                </div>
+                <div class="screenshot-card">
+                    <img src="https://i.imgur.com/placeholder5.png" alt="AR Art Canvas - Nature Category">
+                </div>
+                <div class="screenshot-card">
+                    <img src="https://i.imgur.com/placeholder6.png" alt="AR Art Canvas - App Banner">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Art</h3>
+                    <p>Pick from our massive library of free templates, or upload your own image from your gallery.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Activate AR</h3>
+                    <p>Point your phone at a blank piece of paper. The app will project your drawing in real-time.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Trace & Create</h3>
+                    <p>Trace the lines directly onto your paper, then color, paint, or ink your masterpiece!</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Share Your Art</h3>
+                    <p>Save your finished drawings and share them with friends and family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="hero" style="min-height: 50vh;">
+        <div class="hero-content">
+            <h2>Ready to Start Drawing?</h2>
+            <p>Download AR Art Canvas now and turn your phone into a magic tracing tool!</p>
+            <a href="https://play.google.com/store/apps/details?id=com.cavers.ar.art.canvas" class="download-btn">Get It On Google Play</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 AR Art Canvas. All rights reserved.</p>
+        <p><a href="https://play.google.com/store/apps/details?id=com.cavers.ar.art.canvas">Download on Google Play</a></p>
+    </footer>
+</body>
+</html>
